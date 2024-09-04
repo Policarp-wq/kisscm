@@ -24,6 +24,29 @@ cat /etc/protocols | tail -n5 | sort -n -r -k2 | awk '{print($2, $1)}'
 <img src="https://github.com/user-attachments/assets/23f82735-5872-4e81-8dd3-82548057f686">
 <hr>
 
-##  Задача 3
+## Задача 3
 
+Написать программу banner средствами bash для вывода текстов
 
+### Решение
+
+```
+string=$1
+size=${#string}
+echo -n "+"
+for ((i=-2;i<size;i++))
+do
+echo -n "-"
+done
+echo "+"
+echo "| $string |"
+echo -n "+"
+for ((i=-2;i<size;i++))
+do
+echo -n "-"
+done
+echo "+"
+```
+
+<img src="https://github.com/user-attachments/assets/23f82735-5872-4e81-8dd3-82548057f686">
+<hr>
