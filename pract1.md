@@ -64,3 +64,18 @@ cat $file | grep -Eo "[a-zA-Z]*" | sort | uniq | xargs
 
 <img src="https://github.com/user-attachments/assets/a4110b9c-9ff0-4b02-8a83-f680b2926c0d">
 <hr>
+
+## Задача 5
+
+Написать программу для регистрации пользовательской команды (правильные права доступа и копирование в /usr/local/bin
+
+### Решение
+
+```
+#!/bin/sh
+chmod a=rwx $1
+sudo cp $1 /usr/local/bin
+```
+
+<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<hr>
