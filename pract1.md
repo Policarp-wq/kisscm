@@ -79,3 +79,30 @@ sudo cp $1 /usr/local/bin
 
 <img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
 <hr>
+
+## Задача 6
+
+Написать программу для регистрации пользовательской команды (правильные права доступа и копирование в /usr/local/bin
+
+### Решение
+
+```
+#!/bin/bash
+
+filename="$1"
+file_extension="${filename##*.}"
+
+if [[ "$file_extension" == "js" || "$file_extension" == "py" || "$file_extension" == "c" ]]; then
+    first=$(head -n 1 $filename) 
+	if [[ $first =~ "#" || $first =~ "//" ]]
+		then echo "First line contains comment"
+		else echo "No comment"
+	fi
+else 
+	echo "Wrong extension"
+fi
+	
+```
+
+<img src="https://github.com/user-attachments/assets/9d0dee0a-03c8-4ce2-97ed-57e737f52315">
+<hr>
