@@ -51,3 +51,16 @@ echo "+"
 
 <img src="https://github.com/user-attachments/assets/6ad7834d-76bf-4756-ab1f-fe6727d3b2e7">
 <hr>
+
+## Задача 4
+
+Написать программу для вывода всех идентификаторов (по правилам C/C++ или Java) в файле (без повторений).
+
+### Решение
+
+```
+cat $file | grep -Eo "[a-zA-Z]*" | sort | uniq | xargs
+```
+
+<img src="https://github.com/user-attachments/assets/a4110b9c-9ff0-4b02-8a83-f680b2926c0d">
+<hr>
