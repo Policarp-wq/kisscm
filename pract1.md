@@ -106,3 +106,64 @@ fi
 
 <img src="https://github.com/user-attachments/assets/9d0dee0a-03c8-4ce2-97ed-57e737f52315">
 <hr>
+
+## Задача 7
+
+Написать программу для нахождения файлов-дубликатов (имеющих 1 или более копий содержимого) по заданному пути (и подкаталогам).
+
+### Решение
+
+```
+#!/bin/sh
+chmod a=rwx $1
+sudo cp $1 /usr/local/bin
+```
+
+<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<hr>
+
+## Задача 8
+
+Написать программу, которая находит все файлы в данном каталоге с расширением, указанным в качестве аргумента и архивирует все эти файлы в архив tar.
+
+### Решение
+
+```
+#!/bin/sh
+extension=$1
+find . -name "*.$extension" -print0 | tar -czvf archive.tar.gz --null -T -
+```
+
+<img src="https://github.com/user-attachments/assets/1110930f-6520-4b11-8ad5-ad7dcad5c086">
+<img src="https://github.com/user-attachments/assets/d8c2259e-4d08-4cfe-ae2d-49892e436863">
+<hr>
+
+## Задача 9
+
+Написать программу, которая заменяет в файле последовательности из 4 пробелов на символ табуляции. Входной и выходной файлы задаются аргументами.
+
+### Решение
+
+```
+#!/bin/sh
+chmod a=rwx $1
+sudo cp $1 /usr/local/bin
+```
+
+<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<hr>
+
+## Задача 10
+
+Написать программу, которая выводит названия всех пустых текстовых файлов в указанной директории. Директория передается в программу параметром.
+
+### Решение
+
+```
+#!/bin/sh
+chmod a=rwx $1
+sudo cp $1 /usr/local/bin
+```
+
+<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<hr>
