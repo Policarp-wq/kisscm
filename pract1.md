@@ -155,12 +155,15 @@ find . -name "*.$extension" -print0 | tar -czvf archive.tar.gz --null -T -
 ### Решение
 
 ```
-#!/bin/sh
-chmod a=rwx $1
-sudo cp $1 /usr/local/bin
+#!/bin/bash
+input=$1
+output=$2
+cp $input $output
+sed -i 's/    /\t/g' $output
 ```
 
-<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<img src="https://github.com/user-attachments/assets/3a1953e0-ae9e-4281-ae67-5c4108834005">
+<img src="!https://github.com/user-attachments/assets/342c1afd-643e-45fd-9039-7ed2ff1cced9">
 <hr>
 
 ## Задача 10
