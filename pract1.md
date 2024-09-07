@@ -163,7 +163,8 @@ sed -i 's/    /\t/g' $output
 ```
 
 <img src="https://github.com/user-attachments/assets/3a1953e0-ae9e-4281-ae67-5c4108834005">
-<img src="!https://github.com/user-attachments/assets/342c1afd-643e-45fd-9039-7ed2ff1cced9">
+
+<img src="https://github.com/user-attachments/assets/39ebbb07-1c8b-4731-a794-72372730c003">
 <hr>
 
 ## Задача 10
