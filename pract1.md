@@ -114,12 +114,22 @@ fi
 ### Решение
 
 ```
-#!/bin/sh
-chmod a=rwx $1
-sudo cp $1 /usr/local/bin
+#!/bin/bash
+#Решение построено на идеии сравнивания хэшей
+# Переменная для директории
+directory="$1"
+# Поиск всех файлов, вычисление их хеша и сохранение в файл временного списка
+# -exec md5sum {} + позволяет выполнить команду для каждого файла а не по отдельности
+find "$directory" -type f -exec md5sum {} + | sort > /tmp/file_hashes.txt
+# Вывод файлов-дубликатов
+echo "Найденные дубликаты:"
+awk '{print $1}' /tmp/file_hashes.txt | uniq -d | while read hash; do
+  grep "^$hash" /tmp/file_hashes.txt | awk '{print $2}'
+done
+
 ```
 
-<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<img src="https://github.com/user-attachments/assets/de4604c8-0e84-43a4-8ea4-54a75cf82519">
 <hr>
 
 ## Задача 8
