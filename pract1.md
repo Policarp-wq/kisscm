@@ -174,10 +174,14 @@ sed -i 's/    /\t/g' $output
 ### Решение
 
 ```
-#!/bin/sh
-chmod a=rwx $1
-sudo cp $1 /usr/local/bin
+#!/bin/bash
+dir=$1
+for file in "$dir"/*.txt; do
+	if [ -f "$file" ]&&[ ! -s "$file" ]; then
+		echo "$file"
+	fi 
+done
 ```
 
-<img src="https://github.com/user-attachments/assets/ba2b3ff8-af76-442b-a570-dac77fda5c9d">
+<img src="https://github.com/user-attachments/assets/7905b39e-826e-4c32-8090-1655f9bb209b">
 <hr>
