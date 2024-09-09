@@ -32,6 +32,10 @@ cat /etc/protocols | tail -n5 | sort -n -r -k2 | awk '{print($2, $1)}'
 
 ```
 #!/bin/sh
+if [ -z "$1" ]; then
+  echo "Не передана надпись"
+  exit 1
+fi
 message=$1
 size=${#message}
 echo -n "+"
@@ -59,6 +63,12 @@ echo "+"
 ### Решение
 
 ```
+#!/bin/sh
+if [ -z "$1" ]; then
+  echo "Не передан файл надпись"
+  exit 1
+fi
+file=$1
 cat $file | grep -Eo "[a-zA-Z]*" | sort | uniq | xargs
 ```
 
@@ -73,6 +83,10 @@ cat $file | grep -Eo "[a-zA-Z]*" | sort | uniq | xargs
 
 ```
 #!/bin/sh
+if [ -z "$1" ]; then
+  echo "Не передана команда"
+  exit 1
+fi
 chmod a=rwx $1
 sudo cp $1 /usr/local/bin
 ```
@@ -116,6 +130,10 @@ fi
 ```
 #!/bin/bash
 #Решение построено на идеии сравнивания хэшей
+if [ -z "$1" ]; then
+  echo "Не передана директория"
+  exit 1
+fi
 # Переменная для директории
 directory="$1"
 # Поиск всех файлов, вычисление их хеша и сохранение в файл временного списка
@@ -140,6 +158,10 @@ done
 
 ```
 #!/bin/sh
+if [ -z "$1" ]; then
+  echo "Не передано расширение"
+  exit 1
+fi
 extension=$1
 find . -name "*.$extension" -print0 | tar -czvf archive.tar.gz --null -T -
 ```
@@ -156,6 +178,14 @@ find . -name "*.$extension" -print0 | tar -czvf archive.tar.gz --null -T -
 
 ```
 #!/bin/bash
+if [ -z "$1" ]; then
+  echo "Не передан входной файл"
+  exit 1
+fi
+if [ -z "$2" ]; then
+  echo "Не передан выходной файл"
+  exit 1
+fi
 input=$1
 output=$2
 cp $input $output
@@ -175,6 +205,10 @@ sed -i 's/    /\t/g' $output
 
 ```
 #!/bin/bash
+if [ -z "$1" ]; then
+  echo "Не передана директория"
+  exit 1
+fi
 dir=$1
 for file in "$dir"/*.txt; do
 	if [ -f "$file" ]&&[ ! -s "$file" ]; then
