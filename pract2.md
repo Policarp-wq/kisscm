@@ -18,9 +18,62 @@ sudo apt show python3-matplotlib
 
 Вывести служебную информацию о пакете express (JavaScript). Разобрать основные элементы содержимого файла со служебной информацией из пакета. Как получить пакет без менеджера пакетов, прямо из репозитория?
 
+```
+npm view express
+```
+![image](https://github.com/user-attachments/assets/1c166279-82b1-4e9d-94e1-621e28a8b76c)
+
+Содержит зависимости, разработчиков, ключевые слова и время последнего обновления
+Установить можно с помощью sudo apt install -y nodejs, скачав при этом репозиторий
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+
+
 ## Задача 3
 
 Сформировать graphviz-код и получить изображения зависимостей matplotlib и express.
+
+```
+digraph dependencies {
+    node [shape=box];
+
+    subgraph cluster_matplotlib {
+        label="matplotlib";
+        color=blue;
+        "matplotlib" -> "jquery";
+        "matplotlib" -> "dateutil";
+        "matplotlib" -> "packaging";
+        "matplotlib" -> "numpy";
+        "matplotlib" -> "pyparsing";
+        "matplotlib" -> "python-dateutil";
+        "matplotlib" -> "cycler";
+        "matplotlib" -> "kiwisolver";
+        "matplotlib" -> "pillow";
+    }
+
+    subgraph cluster_express {
+        label="express";
+        color=red;
+        "express" -> "body-parser";
+        "express" -> "cookie";
+        "express" -> "accepts";
+        "express" -> "array-flatten";
+        "express" -> "content-disposition";
+        "express" -> "content-type";
+        "express" -> "depd";
+        "express" -> "etag";
+        "express" -> "fresh";
+        "express" -> "http-errors";
+        "express" -> "encodeurl";
+        "express" -> "path-to-regexp";
+        "express" -> "qs";
+        "express" -> "debug";
+    }
+}!
+
+
+```
+
+[image](https://github.com/user-attachments/assets/d2151f63-c518-4f78-90fc-0979cd84b97d)
 
 ## Задача 4
 
