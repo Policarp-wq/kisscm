@@ -87,9 +87,70 @@ digraph dependencies {
 
 Решить на MiniZinc задачу о счастливых билетах. Добавить ограничение на то, что все цифры билета должны быть различными (подсказка: используйте all_different). Найти минимальное решение для суммы 3 цифр.
 
+
+```
+include "alldifferent.mzn";
+
+var 1..9: a;
+var 1..9: b;
+var 1..9: c;
+var 1..9: d;
+var 1..9: e;
+var 1..9: f;
+
+constraint alldifferent([a, b, c, d, e, f]);
+
+constraint a + b + c = d + e + f;
+
+solve minimize a + b + c;
+
+output [show(a)," ", show(b)," ", show(c)," ", show(d)," ", show(e)," ", show(f)];
+```
+
+![image](https://github.com/user-attachments/assets/1b6c4fae-5c4c-419f-bde2-cb3b5f374b42)
+
+
 ## Задача 5
 
 Решить на MiniZinc задачу о зависимостях пакетов для рисунка
+
+
+```
+enum Menu = { v1_5_0, v1_4_0, v1_3_0, v1_2_0, v1_1_0, v1_0_0 };
+enum Dropdown = { v2_3_0, v2_2_0, v2_1_0, v2_0_0, v1_8_0 };
+enum Icons = {v_2_0_0, v_1_0_0};
+
+array[Menu, Dropdown] of bool: MenuDropdown_compatibility = 
+[| true,  true,  true,  true,  false   
+ |  true,  true,  true,  true,  false 
+ |  true,  true,  true,  true,  false   
+ |  true,  true,  true,  true,  false 
+ |  true,  true,  true,  true,  false   
+ |  false, false, false, false,  true |];
+
+array[Icons, Dropdown] of bool: DropdownIcons_compatibility = 
+[| true,  true,  true,  true,  false     
+ | false, false, false, false,  true |];
+ 
+var Menu: selectedMenu;
+var Dropdown: selectedDropdown;
+var Icons: selectedIcon;
+
+constraint MenuDropdown_compatibility[selectedMenu, selectedDropdown] = true;
+
+constraint DropdownIcons_compatibility[selectedIcon, selectedDropdown] = true;
+
+constraint selectedIcon = v_1_0_0;
+
+solve satisfy;
+
+output ["Selected Menu: " ++ show(selectedMenu) ++ "\n" ++
+        "Selected Dropdown: " ++ show(selectedDropdown) ++ "\n" ++
+        "Selected Icon: " ++ show(selectedIcon)];
+```
+
+![image](https://github.com/user-attachments/assets/1a2aa8c2-593b-42ea-8639-1c04d870b3da)
+
 
 ## Задача 6
 
