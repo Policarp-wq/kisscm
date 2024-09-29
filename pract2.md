@@ -167,6 +167,42 @@ shared 1.0.0 зависит от target ^1.0.0.
 target 2.0.0 и 1.0.0 не имеют зависимостей.
 ```
 
+```
+enum packages = {
+      root, 
+      foo_1_0_0, foo_1_1_0, 
+      left_1_0_0, right_1_0_0, 
+      shared_1_0_0, shared_2_0_0, 
+      target_1_0_0, target_2_0_0
+  };
+  
+  array[packages] of var bool: installed;
+  
+  constraint installed[root];
+
+  constraint
+      (installed[root]) -> (installed[foo_1_1_0] /\ installed[target_2_0_0]) /\
+      (installed[foo_1_1_0]) -> (installed[left_1_0_0] /\ installed[right_1_0_0]) /\
+      (installed[left_1_0_0]) -> (installed[shared_1_0_0]) /\
+      (installed[right_1_0_0]) -> (installed[shared_2_0_0]) /\ (not installed[shared_1_0_0]) /\
+      (installed[shared_1_0_0]) -> (installed[target_1_0_0]);
+  
+  output [
+      "root " ++ show(installed[root]) ++ "\n" ++ 
+      "foo_1_0_0 " ++ show(installed[foo_1_0_0]) ++ "\n" ++ 
+      "foo_1_1_0 " ++ show(installed[foo_1_1_0]) ++ "\n" ++ 
+      "left_1_0_0 " ++ show(installed[left_1_0_0]) ++ "\n" ++ 
+      "right_1_0_0 " ++ show(installed[right_1_0_0]) ++ "\n" ++ 
+      "shared_1_0_0 " ++ show(installed[shared_1_0_0]) ++ "\n" ++ 
+      "shared_2_0_0 " ++ show(installed[shared_2_0_0]) ++ "\n" ++ 
+      "target_1_0_0 " ++ show(installed[target_1_0_0]) ++ "\n" ++
+      "target_2_0_0 " ++ show(installed[target_2_0_0]) ++ "\n" 
+       ];
+```
+
+![image](https://github.com/user-attachments/assets/99ca5178-da09-42d6-86ba-e5c0a09f8a2f)
+
+
 ## Задача 7
 
 Представить задачу о зависимостях пакетов в общей форме. Здесь необходимо действовать аналогично реальному менеджеру пакетов. То есть получить описание пакета, а также его зависимости в виде структуры данных. Например, в виде словаря. В предыдущих задачах зависимости были явно заданы в системе ограничений. Теперь же систему ограничений надо построить автоматически, по метаданным.
