@@ -206,3 +206,116 @@ enum packages = {
 ## Задача 7
 
 Представить задачу о зависимостях пакетов в общей форме. Здесь необходимо действовать аналогично реальному менеджеру пакетов. То есть получить описание пакета, а также его зависимости в виде структуры данных. Например, в виде словаря. В предыдущих задачах зависимости были явно заданы в системе ограничений. Теперь же систему ограничений надо построить автоматически, по метаданным.
+
+```
+from z3 import *
+import json
+
+with open('dependencies.json') as f:
+    packages = json.loads(f.read())
+
+optimizer = Optimize()
+var = {}
+for name in packages:
+    var[name] = Bool(name)
+
+optimizer.add(var['root'])
+
+for name, deps in packages.items():
+    for alts in deps:
+        if(len(alts) != 0):
+            optimizer.add(Implies(var[name], Or([var[d] for d in alts])))
+
+optimizer.minimize(sum(var.values()))
+print(optimizer.check())
+
+if optimizer.check() == sat:
+    print(optimizer.model())
+
+
+```
+
+Для данных:[dependencies.json](https://github.com/user-attachments/files/17270746/dependencies.json)
+
+```
+{
+  root: [
+    [
+      "menu_v1.5.0",
+      "menu_v1.4.0",
+      "menu_v1.3.0",
+      "menu_v1.2.0",
+      "menu_v1.1.0",
+      "menu_v1.0.0",
+    ],
+    ["icons_v1.0.0"],
+  ],
+  "menu_v1.5.0": [
+    [
+      "dropdown_v2.3.0",
+      "dropdown_v2.2.0",
+      "dropdown_v2.1.0",
+      "dropdown_v2.0.0",
+    ],
+  ],
+  "menu_v1.4.0": [
+    [
+      "dropdown_v2.3.0",
+      "dropdown_v2.2.0",
+      "dropdown_v2.1.0",
+      "dropdown_v2.0.0",
+    ],
+  ],
+  "menu_v1.3.0": [
+    [
+      "dropdown_v2.3.0",
+      "dropdown_v2.2.0",
+      "dropdown_v2.1.0",
+      "dropdown_v2.0.0",
+    ],
+  ],
+  "menu_v1.2.0": [
+    [
+      "dropdown_v2.3.0",
+      "dropdown_v2.2.0",
+      "dropdown_v2.1.0",
+      "dropdown_v2.0.0",
+    ],
+  ],
+  "menu_v1.1.0": [
+    [
+      "dropdown_v2.3.0",
+      "dropdown_v2.2.0",
+      "dropdown_v2.1.0",
+      "dropdown_v2.0.0",
+    ],
+  ],
+  "menu_v1.0.0": [["dropdown_v1.8.0"]],
+  "dropdown_v2.3.0": [["icons_v2.0.0"]],
+  "dropdown_v2.2.0": [["icons_v2.0.0"]],
+  "dropdown_v2.1.0": [["icons_v2.0.0"]],
+  "dropdown_v2.0.0": [["icons_v2.0.0"]],
+  "dropdown_v1.8.0": [["icons_v1.0.0"]],
+  "icons_v2.0.0": [[]],
+  "icons_v1.0.0": [[]],
+}
+```
+Выводит
+
+```
+sat
+[menu_v1.5.0 = False,
+ menu_v1.4.0 = False,
+ menu_v1.3.0 = False,
+ menu_v1.2.0 = False,
+ menu_v1.1.0 = False,
+ menu_v1.0.0 = True,
+ dropdown_v2.3.0 = False,
+ dropdown_v2.2.0 = False,
+ dropdown_v2.1.0 = False,
+ dropdown_v2.0.0 = False,
+ dropdown_v1.8.0 = True,
+ icons_v2.0.0 = False,
+ icons_v1.0.0 = True,
+ root = True]
+```
