@@ -91,12 +91,12 @@ digraph dependencies {
 ```
 include "alldifferent.mzn";
 
-var 1..9: a;
-var 1..9: b;
-var 1..9: c;
-var 1..9: d;
-var 1..9: e;
-var 1..9: f;
+var 0..9: a;
+var 0..9: b;
+var 0..9: c;
+var 0..9: d;
+var 0..9: e;
+var 0..9: f;
 
 constraint alldifferent([a, b, c, d, e, f]);
 
@@ -107,7 +107,8 @@ solve minimize a + b + c;
 output [show(a)," ", show(b)," ", show(c)," ", show(d)," ", show(e)," ", show(f)];
 ```
 
-![image](https://github.com/user-attachments/assets/1b6c4fae-5c4c-419f-bde2-cb3b5f374b42)
+![image](https://github.com/user-attachments/assets/bb0bb56d-ee4d-4d7e-ac5a-b406bc9725c6)
+
 
 
 ## Задача 5
