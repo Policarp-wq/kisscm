@@ -89,13 +89,13 @@ local get_student(age, group, name) ={
 let GroupCount = 24
 
 let groups =
-      [ "ИКБО-${Natural/show i}-20" | i <- List/replicate GroupCount (Natural) ]
+      [ "ИКБО-${Natural/show i}-20" | i <- List/enumFromTo 1 GroupCount ]
 
 let students =
       [ { age = 19, group = "ИКБО-4-20", name = "Иванов И.И." }
       , { age = 18, group = "ИКБО-5-20", name = "Петров П.П." }
       , { age = 18, group = "ИКБО-5-20", name = "Сидоров С.С." }
-      , { age = 20, group = "ИКБО-10-23", name = "Татакрин Е.Ю." }  -- Мои данные
+      , { age = 19, group = "ИКБО-10-23", name = "Татакрин Е.Ю." }  -- Мои данные
       ]
 
 let subject = "Конфигурационное управление"
@@ -167,9 +167,30 @@ in json
 ## Задача 3
 Язык нулей и единиц.
 
+```
+E = 1 | 0 | E E
+```
+
+![image](https://github.com/user-attachments/assets/c3e9b3e0-0c02-4c98-a243-d5621cd351d5)
+
+
 ## Задача 4
 Язык правильно расставленных скобок двух видов.
 
+```
+E = ( E ) | { E } | E E | 
+```
+
+![image](https://github.com/user-attachments/assets/9bbe7d66-d925-4b64-9cb7-e0273d319a33)
+
+
 ## Задача 5
 Язык выражений алгебры логики.
+
+```
+E = ( E ) | E & E | ~ E | x | y | E
+```
+![image](https://github.com/user-attachments/assets/cf03353d-76ef-47a1-afdb-b23796b9b5ed)
+
+
 
