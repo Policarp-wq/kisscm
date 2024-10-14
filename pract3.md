@@ -86,27 +86,7 @@ local get_student(age, group, name) ={
 Реализовать на Dhall приведенный ниже пример в формате JSON. Использовать в реализации свойство программируемости и принцип DRY.
 
 ```
-let GroupCount = 24
 
-let groups =
-      [ "ИКБО-${Natural/show i}-20" | i <- List/enumFromTo 1 GroupCount ]
-
-let students =
-      [ { age = 19, group = "ИКБО-4-20", name = "Иванов И.И." }
-      , { age = 18, group = "ИКБО-5-20", name = "Петров П.П." }
-      , { age = 18, group = "ИКБО-5-20", name = "Сидоров С.С." }
-      , { age = 19, group = "ИКБО-10-23", name = "Татакрин Е.Ю." }  -- Мои данные
-      ]
-
-let subject = "Конфигурационное управление"
-
-let json =
-    { groups = groups
-    , students = students
-    , subject = subject
-    }
-
-in json
 
 ```
 Результат:
