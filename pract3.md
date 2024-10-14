@@ -94,12 +94,23 @@ let range = https://prelude.dhall-lang.org/List/generate
 
 let groups : List Text = range 24 Text get_group
 
-let students =
-      [ { age = 19, group = "ИКБО-4-20", name = "Иванов И.И." }
-      , { age = 18, group = "ИКБО-5-20", name = "Петров П.П." }
-      , { age = 18, group = "ИКБО-5-20", name = "Сидоров С.С." }
-      , { age = 19, group = "ИКБО-10-23", name = "Татакрин Е.Ю." }  -- Мои данные
-      ]
+let get_student = 
+  \(name : Text) -> 
+  \(age : Natural) -> 
+  \(group_num : Natural) ->
+{ 
+  name = name, 
+  group = get_group group_num, 
+  age = age 
+}
+
+let students = [
+      get_student "Иванов И.И." 19 3,
+      get_student "Иванов И.И." 18 4,
+      get_student "Иванов И.И." 18 4,
+      get_student "Татаркин Е.Ю" 19 9,
+]
+
 
 let subject = "Конфигурационное управление"
 
@@ -150,17 +161,17 @@ in json
     {
       "age": 18,
       "group": "ИКБО-5-20",
-      "name": "Петров П.П."
+      "name": "Иванов И.И."
     },
     {
       "age": 18,
       "group": "ИКБО-5-20",
-      "name": "Сидоров С.С."
+      "name": "Иванов И.И."
     },
     {
       "age": 19,
-      "group": "ИКБО-10-23",
-      "name": "Татакрин Е.Ю."
+      "group": "ИКБО-10-20",
+      "name": "Татаркин Е.Ю"
     }
   ],
   "subject": "Конфигурационное управление"
