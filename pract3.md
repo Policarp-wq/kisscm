@@ -86,13 +86,13 @@ local get_student(age, group, name) ={
 Реализовать на Dhall приведенный ниже пример в формате JSON. Использовать в реализации свойство программируемости и принцип DRY.
 
 ```
-let GroupCount = 24
+let group_count = 24
 
 let get_group = \(i : Natural) -> "ИКБО-${Natural/show (i + 1)}-20"
 
 let range = https://prelude.dhall-lang.org/List/generate
 
-let groups : List Text = range 24 Text get_group
+let groups : List Text = range group_count Text get_group
 
 let get_student = 
   \(name : Text) -> 
@@ -121,7 +121,6 @@ let json =
     }
 
 in json
-
 ```
 Результат:
 ```
