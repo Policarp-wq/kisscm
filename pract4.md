@@ -37,6 +37,34 @@ git checkout "in"
 Создать локальный git-репозиторий. Задать свои имя и почту (далее – coder1). Разместить файл prog.py с какими-нибудь данными. Прислать в текстовом виде диалог с git.
 ## Решение
 
+```bash
+policarp@DESKTOP-MHHUTTM:~$ mkdir forgit
+policarp@DESKTOP-MHHUTTM:~$ cd forgit/
+policarp@DESKTOP-MHHUTTM:~/forgit$ git config --global user.name "Eugene Policarp"
+policarp@DESKTOP-MHHUTTM:~/forgit$ git config --global user.email "tatarkin-evgeniy@mail.ru"
+policarp@DESKTOP-MHHUTTM:~/forgit$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /home/policarp/forgit/.git/
+policarp@DESKTOP-MHHUTTM:~/forgit$ touch prog.py
+policarp@DESKTOP-MHHUTTM:~/forgit$ git add .
+policarp@DESKTOP-MHHUTTM:~/forgit$ git commit -m "Init"
+[master (root-commit) d4a60d2] Init
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 prog.py
+```
+
+![image](https://github.com/user-attachments/assets/034b551b-c6a0-435c-9463-14f49a5ff11f)
+
+
 ## Задача 3
 
 Создать рядом с локальным репозиторием bare-репозиторий с именем server. Загрузить туда содержимое локального репозитория. Команда git remote -v должна выдать информацию о server! Синхронизировать coder1 с server.
