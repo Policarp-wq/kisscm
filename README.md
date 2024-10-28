@@ -1,2 +1,2 @@
-1. [https://github.com/Policarp-wq/OSEmulator](ДЗ 1 Эмулятор)
-2. [https://github.com/Policarp-wq/PackageAnalyzer](ДЗ 2 визуализатор зависимостей)
+1. [https://github.com/Policarp-wq/OSEmulator](ДЗ_1_Эмулятор)
+2. [https://github.com/Policarp-wq/PackageAnalyzer](ДЗ_2_визуализатор_зависимостей)
