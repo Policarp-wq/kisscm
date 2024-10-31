@@ -179,3 +179,24 @@ git log --graph
 Написать программу на Питоне (или другом ЯП), которая выводит список содержимого всех объектов репозитория. Воспользоваться командой "git cat-file -p". Идеальное решение – не использовать иных сторонних команд и библиотек для работы с git.
 
 ## Решение
+
+```python
+import os
+import subprocess
+
+
+dir = r'C:\Users\Policarp\Desktop\forgit'
+
+os.chdir(dir + r'\.git\objects')
+
+for file in os.listdir():
+    if file not in ['info', 'pack']:
+        hash = file + os.listdir(os.getcwd() + r'\\' + file)[0]
+        #print(hash)
+        result = subprocess.run(['git', 'cat-file', '-p', hash], capture_output=True, text=True, shell=True).stdout
+        if(len(result) > 0):
+            print(result)
+```
+
+Часть вывода:
+![image](https://github.com/user-attachments/assets/d73db890-0ae9-4970-920c-778918c51b42)
