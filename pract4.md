@@ -112,6 +112,100 @@ Coder2 добавляет в readme в раздел об авторах свою
       first commit
 ```
 
+```bash
+*   commit 2c36f55049093fb14a676c1ef88fa5860ab96650 (HEAD -> master, server/master)
+|\  Merge: 04b0359 a11934c
+| | Author: Eugene Policarp <tatarkin-evgeniy@mail.ru>
+| | Date:   Thu Oct 31 14:00:19 2024 +0300
+| |
+| |     Fixed conflict
+| |
+| * commit a11934c9a7002ddf65c8cb2a4827d6641a163ebf (eugene-features)
+| | Author: Eugene Policarp <tatarkin-evgeniy@mail.ru>
+| | Date:   Thu Oct 31 13:53:51 2024 +0300
+| |
+| |     Added Eugene to authors
+| |
+* | commit 04b035985f40324ccc2ee4c5b368fc6e5aeada40
+|/  Author: Vadim <vadim@mail.ru>
+|   Date:   Thu Oct 31 13:55:01 2024 +0300
+|
+|       Added Vadim to authors
+|
+* commit ad8b1339f0fb37ad4694524e0492ed594c734f12
+| Author: Vadim <vadim@mail.ru>
+| Date:   Thu Oct 31 13:44:33 2024 +0300
+|
+|     added readme
+|
+* commit f8637e0fc7a0033d12c132420e3dac60f718f014
+```
+
+Команды:
+
+```
+cd forgit
+git remote add server ../server/
+git revote -v
+git remote -v
+git push server main
+git push server master
+cd ..
+cd server/
+git log
+ls
+cd ..
+git clone server work
+cd work/
+git config user.name "Vadim" && git config user.email "vadim@mail.ru"
+ls
+nano readme.md
+git add . && git commit -m "added readme"
+git remote -v
+git push origin master
+cd ../server/
+cd forgit
+git pull
+git pull server master
+git checkout -b eugene-features
+nano readme.md
+git add . && git commit -m "Added Eugene to authors"
+cs
+cd ../work/
+gls
+ls
+sl
+nano  readme.md
+git add . && git commit -m "Added Vadim to authors"
+cd ..
+cd work/
+git push origin master
+cd ../forgit
+ls
+git pull server master
+ls
+cat readme.md
+git switch master
+ls
+cat readme.md
+git pull server master
+cat readme.md
+git merge eugene-features
+nano readme.md
+git merge eugene-features
+git branch
+cat readme.md
+nano readme.md
+git merge eugene-features
+git add .
+git merge eugene-features
+git commit -m "Fixed conflict"
+git merge eugene-features
+cat readme.md
+git push server master
+git log --graph
+```
+
 ## Решение
 
 ## Задача 4
