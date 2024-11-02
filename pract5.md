@@ -19,14 +19,14 @@ def foo(x):
 print(dis.dis(foo))
 ```
 
-Опишите по шагам, что делает каждая из следующих команд (приведите эквивалентное выражение на Python):
+Опишите по шагам, что делает каждая из следующих команд (приведите эквивалентное выражение на Python):\
 
  11           0 LOAD_FAST                0 (x)   --> Загрузка в стек x\
               2 LOAD_CONST               1 (10)  --> Загрузка в стек 10\
-              4 BINARY_MULTIPLY                  --> Загрузка в стек результата 10 * x
-              6 LOAD_CONST               2 (42)  --> Загрузка в стек константы 42
-              8 BINARY_ADD                       --> Загрузка в стек результата сложения 42 + 10x  
-             10 RETURN_VALUE                     --> Возврат из вершины стека 42 + 10x
+              4 BINARY_MULTIPLY                  --> Загрузка в стек результата 10 * x\
+              6 LOAD_CONST               2 (42)  --> Загрузка в стек константы 42\
+              8 BINARY_ADD                       --> Загрузка в стек результата сложения 42 + 10x\  
+             10 RETURN_VALUE                     --> Возврат из вершины стека 42 + 10x\
 
 ```python
 def foo(x):
@@ -39,27 +39,40 @@ def foo(x):
 Что делает следующий байткод (опишите шаги его работы)? Это известная функция, назовите ее.
 
 ```
-  5           0 LOAD_CONST               1 (1)
-              2 STORE_FAST               1 (r)
+  5           0 LOAD_CONST               1 (1) --> Загрузка константы 1 в стек [1]
+              2 STORE_FAST               1 (r) --> Приравнивание r = 1
 
-  6     >>    4 LOAD_FAST                0 (n)
-              6 LOAD_CONST               1 (1)
-              8 COMPARE_OP               4 (>)
-             10 POP_JUMP_IF_FALSE       30
+  6     >>    4 LOAD_FAST                0 (n) --> В стеке [n]
+              6 LOAD_CONST               1 (1) --> Загрузка константы 1 в стек [n, 1] 
+              8 COMPARE_OP               4 (>) --> Загрузка сравнения > между TOS1 TOS (n > 1) [n > 1]
+             10 POP_JUMP_IF_FALSE       30     --> Если n <= 1, то переходим на инструкцию 30, удаляем n > 1 
 
-  7          12 LOAD_FAST                1 (r)
-             14 LOAD_FAST                0 (n)
-             16 INPLACE_MULTIPLY
-             18 STORE_FAST               1 (r)
+  7          12 LOAD_FAST                1 (r) --> Загрузка в стек [r]
+             14 LOAD_FAST                0 (n) --> Загрузка в стек [r, n]
+             16 INPLACE_MULTIPLY               -->  Загружаем в стек результат r * n [r * n]
+             18 STORE_FAST               1 (r) --> Приравниваем r = r * n
 
-  8          20 LOAD_FAST                0 (n)
-             22 LOAD_CONST               1 (1)
-             24 INPLACE_SUBTRACT
-             26 STORE_FAST               0 (n)
-             28 JUMP_ABSOLUTE            4
+  8          20 LOAD_FAST                0 (n) --> Загружаем в стек n [n]
+             22 LOAD_CONST               1 (1) --> Загружаем в стек 1 [n, 1]
+             24 INPLACE_SUBTRACT               --> Вычитаенм TOS1 - TOS и загружаем в стек [n - 1]
+             26 STORE_FAST              0 (n)  --> Приравниваем n TOS n = n - 1 
+             28 JUMP_ABSOLUTE            4     -->  Переходим к шагу 4
 
-  9     >>   30 LOAD_FAST                1 (r)
-             32 RETURN_VALUE
+  9     >>   30 LOAD_FAST               1 (r) --> В вершину стека загружаем r 
+             32 RETURN_VALUE                  --> Возвращаем r
+```
+
+Программа вычисляет n!\
+
+Код на питоне:
+```python
+def fact(n):
+    r = 1
+    while n > 1:
+        r = r * n
+        n = n - 1
+    return r
+
 ```
 
 ## Задача 3
