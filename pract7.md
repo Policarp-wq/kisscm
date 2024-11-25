@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/64f7bc1d-ea5e-4079-ad9e-c9a80502ad3b)![image](https://github.com/user-attachments/assets/1ec92b92-4c45-4ae9-a7f3-a406e8ea1d5d)# Практическое занятие №7. Генераторы документации
+# Практическое занятие №7. Генераторы документации
 
 П.Н. Советов, РТУ МИРЭА
 
@@ -10,8 +10,9 @@
 Прислать код на LaTeX и картинку-результат, где, помимо формулы, будет указано ФИО студента.
 
 Решение:
-![image](https://github.com/user-attachments/assets/add93374-edff-4486-829d-722616bee848)
+![image](https://github.com/user-attachments/assets/d5bbaaac-2b76-474e-9969-da099d95e3bb)
 
+<hr>
 
 ```Latex
 \documentclass[12pt]{article}
