@@ -79,6 +79,36 @@ def fact(n):
 
 Приведите результаты из задач 1 и 2 для виртуальной машины JVM (Java) или .Net (C#).
 
+```
+   0: iload_0
+   1: bipush 10
+   3: imul
+   4: bipush 42
+   6: iadd
+   7: ireturn
+```
+Вторая задача
+```
+   0: iconst_1
+   1: istore_1
+   2: iload_0
+   3: iconst_1
+   4: if_icmple 20
+   7: iload_1
+   8: iload_0
+   9: imul
+  10: istore_1
+  11: iload_0
+  12: iconst_1
+  13: isub
+  14: istore_0
+  15: iload_0
+  16: iconst_1
+  17: if_icmpgt 7
+  20: iload_1
+  21: ireturn
+```
+
 ## Задача 4
 
 Работа с qemu. Скачать и установить ISO-образ Alpine Linux для виртуальных машин с официального сайта.
