@@ -36,7 +36,8 @@ Tatarkin Evgeniy
 ![image](https://github.com/user-attachments/assets/8e3819c6-9cdb-4e71-85b6-5bb9596eacdd)
 <hr>
 Решение:
-```plantuml
+
+```
 @startuml
 skinparam monochrome true
 actor "Татаркин Евгений Юрьевич" as S
