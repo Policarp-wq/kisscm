@@ -10,7 +10,8 @@
 Прислать код на LaTeX и картинку-результат, где, помимо формулы, будет указано ФИО студента.
 
 Решение:
-![image](https://github.com/user-attachments/assets/6233756c-7d58-4fc8-8ac8-5dd28707b87a)
+![image](https://github.com/user-attachments/assets/add93374-edff-4486-829d-722616bee848)
+
 
 ```Latex
 \documentclass[12pt]{article}
@@ -22,7 +23,7 @@ Tatarkin Evgeniy
 
 \[
 \int_{x}^{\infty} \frac{dt}{t(t^2-1)\log t} = \int_{x}^{\infty} \frac{1}{t \log t} \left( \sum_{m} t^{-2m} \right) dt 
-= \sum_{m} \int_{x}^{\infty} \frac{t^{-2m}}{t \log t} dt^{(u = t^{-2m})} = \sum_{m} \text{li}(x^{-2m})
+= \sum_{m} \int_{x}^{\infty} \frac{t^{-2m}}{t \log t} dt^{(u = t^{-2m})} = -\sum_{m} \text{li}(x^{-2m})
 \]
 \end{document}
 
